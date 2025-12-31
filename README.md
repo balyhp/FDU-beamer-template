@@ -35,3 +35,4 @@ Restart after modifying settings.json and choose the recipe `xelatex-biber-xelat
 ## Attention
 Currently this template supports English/Chinese version. You can modify font type and size in `beamerthemefudan.sty` file. 
 When using this template, keep `ref.bib` , `beamerthemefudan.sty` and folder `/assets` in the same folder as your `main.tex` file. You can modify `ref.bib` to add your own references. It's used in the same way as `bibtex` but `biber` is a more powerful backend for bibliography management.
+
