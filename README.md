@@ -1,6 +1,5 @@
 ## How to use this template
-- Overleaf: You can upload the whole folder.zip to Overleaf and compile `main.tex` directly.But I already upload this template to Overleaf Gallery for convenience.
-Gallery address: https://www.overleaf.com/latex/templates/
+- Overleaf: You can upload the whole folder.zip to Overleaf and compile `main.tex` directly. Notice to choose Xelatex as compiler in Overleaf settings
 
 - Local LaTeX compilation: You can download the whole folder in zip and compile `main.tex` using `xelatex-biber-xelatex`. 
 ## Configuration for LaTeX Workshop
@@ -35,4 +34,5 @@ Restart after modifying settings.json and choose the recipe `xelatex-biber-xelat
 ## Attention
 Currently this template supports English/Chinese version. You can modify font type and size in `beamerthemefudan.sty` file. 
 When using this template, keep `ref.bib` , `beamerthemefudan.sty` and folder `/assets` in the same folder as your `main.tex` file. You can modify `ref.bib` to add your own references. It's used in the same way as `bibtex` but `biber` is a more powerful backend for bibliography management.
+
 
