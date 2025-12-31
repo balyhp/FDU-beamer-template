@@ -1,0 +1,229 @@
+%% author: Zric
+%% last edited: 2025-12-25
+%% description: FDU beamer template using XeLaTeX and traditional BibTeX
+%% Notice: use xelatex-biber-xelatex-xelatex to compile, keep test.sty and ref.bib in the same folder !!!
+%% Notice: use xelatex-biber-xelatex-xelatex to compile, keep test.sty and ref.bib in the same folder !!!
+%% Notice: use xelatex-biber-xelatex-xelatex to compile, keep test.sty and ref.bib in the same folder !!!
+
+\ProvidesPackage{beamerthemefudan}
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\RequirePackage{booktabs}
+\RequirePackage{float}
+\RequirePackage{geometry}
+\geometry{paperwidth=16cm,paperheight=9cm}
+
+\let\Gamma\undefined
+\let\Delta\undefined
+\let\Theta\undefined
+\let\Lambda\undefined
+\let\Xi\undefined
+\let\Pi\undefined
+\let\Sigma\undefined
+\let\Upsilon\undefined
+\let\Phi\undefined
+\let\Psi\undefined
+\let\Omega\undefined
+
+\RequirePackage{xcolor}
+% Main colour (Fudan Blue-ish)
+\definecolor{maincolor}{RGB}{0,70,140} 
+% "Warm grey"
+\definecolor{sintefgrey}{RGB}{235,235,230}
+\colorlet{sintefgray}{sintefgrey}
+% Greens
+\definecolorset{RGB}{sintef}{}{lightgreen, 205,250,225;%
+                               green,       20,185,120;%
+                               darkgreen,    0, 70, 40}
+% Additional colours
+\definecolorset{RGB}{sintef}{}{yellow, 200,155,20;%
+                               red,    190, 60,55;%
+                               lilla,  120,  0,80}
+% Deprecated colours for backward compatibility
+\definecolorset{HTML}{sintef}{}{cyan,      22A7E5;%
+                                magenta,   EC008C;%
+                                lightgrey, D8D0C7}
+\colorlet{sinteflightgray}{sinteflightgrey}
+\definecolor{sintefred}{RGB}{180,0,0}
+\definecolor{darkgray}{RGB}{40,40,40}
+
+% font type (support English)
+\usefonttheme{professionalfonts} 
+\usefonttheme{serif} 
+
+\RequirePackage{mathspec}
+\renewcommand{\familydefault}{\sfdefault}
+\RequirePackage{graphicx}
+
+\RequirePackage[quiet]{xeCJK}
+\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{SimHei}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+\setmainfont{Cambria}
+\setsansfont{Cambria}
+\setmonofont{Courier New}
+
+\setmathsfont(Digits,Latin,Greek){Times New Roman}
+\setmathrm{Times New Roman}
+\setboldmathrm{Times New Roman Bold}
+
+% font size
+\setbeamerfont{title}{size=\fontsize{20pt}{24pt}\selectfont,series=\bfseries}
+\setbeamerfont{subtitle}{size=\fontsize{16pt}{20pt}\selectfont}
+\setbeamerfont{frametitle}{size=\fontsize{16pt}{20pt}\selectfont,series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\fontsize{12pt}{14pt}\selectfont,series=\mdseries}
+\setbeamerfont{normal text}{size=\fontsize{14pt}{20pt}\selectfont}
+\setbeamerfont{block title}{size=\fontsize{18pt}{22pt}\selectfont,series=\centering\bfseries}
+\setbeamerfont{block body}{parent=normal text}
+\setbeamerfont{itemize/enumerate body}{size=\fontsize{18pt}{24pt}\selectfont}
+\setbeamerfont{itemize/enumerate subbody}{size=\fontsize{18pt}{24pt}\selectfont}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\fontsize{18pt}{24pt}\selectfont}
+\setbeamerfont{footnote}{size=\fontsize{12pt}{18pt}\selectfont}
+\setbeamerfont{footline}{size=\fontsize{12pt}{18pt}\selectfont}
+\setbeamerfont{bibliography entry author}{size=\fontsize{12pt}{14pt}\selectfont}
+\setbeamerfont{bibliography entry title}{size=\fontsize{12pt}{14pt}\selectfont}
+\setbeamerfont{bibliography entry location}{size=\fontsize{12pt}{14pt}\selectfont}
+\setbeamerfont{bibliography entry note}{size=\fontsize{12pt}{14pt}\selectfont}
+\setbeamerfont{author}{size=\fontsize{12pt}{14pt}\selectfont}
+\setbeamerfont{date}{size=\fontsize{12pt}{14pt}\selectfont}
+\setbeamerfont{affiliation}{size=\fontsize{12pt}{14pt}\selectfont}
+\setbeamerfont{section in toc}{size=\fontsize{14pt}{18pt}\selectfont}
+
+% template
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle continuation}{}
+
+% Logo
+\pgfdeclareimage[width=0.09\paperwidth]{logo}{assets/logo_RGB}
+\pgfdeclareimage[width=0.09\paperwidth]{whitelogo}{assets/logo_RGB_negative}
+\newcommand{\@logo}{logo}
+
+% Color Theme
+\newcommand{\themecolor}[1]{
+    \ifstrequal{#1}{main}{%
+        \setbeamercolor{footline}{fg=white}
+        \setbeamercolor{normal text}{fg=white,bg=maincolor}
+        \setbeamercolor{structure}{fg=white}
+        \renewcommand{\@logo}{whitelogo}
+        \setbeamercolor{block title}{fg=maincolor,bg=sintefgrey}
+        \setbeamercolor{block body}{fg=darkgray,bg=sintefgrey}
+    }{%
+        \setbeamercolor{footline}{fg=darkgray}
+        \setbeamercolor{normal text}{fg=darkgray,bg=white}
+        \setbeamercolor{structure}{fg=maincolor}
+        \renewcommand{\@logo}{logo}
+        \setbeamercolor{block title}{fg=white,bg=maincolor}
+        \setbeamercolor{block body}{fg=darkgray,bg=sintefgrey}
+    }
+}
+\themecolor{white}
+
+\setbeamercolor{title}{fg=maincolor,bg=white}
+\setbeamercolor{alerted text}{fg=sintefred}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{date}{fg=black}
+
+% Blocks & Lists
+\setbeamertemplate{blocks}[rounded]
+\setbeamertemplate{itemize item}{\textbullet}
+\setbeamertemplate{itemize subitem}{\textemdash}
+\setbeamertemplate{itemize subsubitem}{\ensuremath{\circ}}
+
+% Headline
+\setbeamertemplate{headline}{\hspace{0.05\textwidth}\pgfuseimage{\@logo}}
+\def\@affiliation{}
+\newcommand{\affiliation}[1]{\def\@affiliation{#1}}
+
+% Frametitle
+\setbeamertemplate{frametitle}{%
+  \vspace*{-3.5ex}
+  \begin{beamercolorbox}[leftskip=2cm]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle\\
+    \usebeamerfont{framesubtitle}\insertframesubtitle
+  \end{beamercolorbox}
+}
+
+% Title Page & Background
+\newcommand{\TikzSplitSlide}[1]{%
+  \rule{0.6\paperwidth}{0pt}%
+  \begin{tikzpicture}
+    \clip ( -0.05\paperwidth,-0.5\paperheight) -- 
+          ( 0.5\paperwidth,-0.5\paperheight) -- 
+          ( 0.5\paperwidth, 0.5\paperheight) -- 
+          ( 0.15\paperwidth, 0.5\paperheight) -- cycle; 
+    \node at (0.2\paperwidth,0) {%
+      \includegraphics[height=\paperheight]{#1}%
+    };
+  \end{tikzpicture}
+}
+
+\newbool{splittitle}
+\newcommand{\@TitleBackground}{}
+\newcommand{\titlebackground}{\@ifstar{\SplitBackground}{\FullBackground}}
+\newcommand{\FullBackground}[1]{\renewcommand{\@TitleBackground}{#1}}
+\newcommand{\SplitBackground}[1]{%
+    \booltrue{splittitle}%
+    \renewcommand{\@TitleBackground}{#1}%
+}
+
+\setbeamertemplate{title page}{%
+  \vskip0pt plus 1filll%
+  \hspace{-12mm}
+  \vspace{20mm}
+  \begin{beamercolorbox}[wd=0.72\textwidth,sep=10pt,leftskip=8mm]{title}%
+    {\usebeamerfont{title}\inserttitle\par}%
+    \vspace{0.5em}%
+    {\usebeamerfont{subtitle}\insertsubtitle\par}%
+    \vspace{0.8em}%
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\textbf{\insertauthor}\par}%
+    \vspace{0.5em}%
+    {\usebeamerfont{affiliation}\usebeamercolor[fg]{author}\@affiliation\par}
+    \vspace{0.5em}%
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
+  \end{beamercolorbox}
+}
+
+\renewcommand{\maketitle}{
+\begingroup
+  \ifdefempty{\@TitleBackground}{}{%
+    \setbeamertemplate{background}{%
+      \ifbool{splittitle}{%
+        \TikzSplitSlide{\@TitleBackground}
+      }{%
+        \includegraphics[height=\paperheight]{\@TitleBackground}
+      }
+    }
+  }
+  \begin{frame}%
+  \titlepage%
+  \end{frame}%
+\endgroup
+}
+
+% Sectioning
+\AtBeginSection[]
+{
+    \begingroup
+    \themecolor{main}
+    \begin{frame}{Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+    \endgroup
+}
+\setbeamertemplate{section in toc}{$\blacktriangleright$~\inserttocsection}
+
+% Backmatter
+\newcommand{\backmatter}[1][]{
+\begingroup
+  \themecolor{main}
+  \begin{frame}[c]
+    \centering
+    \begin{minipage}{\textwidth}
+      \usebeamercolor[fg]{normal text}
+      \centering
+      \Huge\textit{Thank you for listening! }
+    \end{minipage}
+  \end{frame}
+\endgroup
+}
